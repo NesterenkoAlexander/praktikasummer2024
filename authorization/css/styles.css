@@ -1,0 +1,173 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #E9F6FF;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.left-group {
+    position: relative;
+    margin-left: -10px;
+    margin-top: -10px;
+    background-image: linear-gradient(180deg, #0094FE 10%, #0000FE 85%);
+    height: 100vh;
+    width: 860px;
+}
+
+.left-group-texts {
+    position: absolute;
+    top: 50%;
+    left: 75px;
+    transform: translateY(-50%);
+}
+
+.left-group-title {
+    color: white;
+    font-family: "Geologica", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    text-align: left;
+}
+
+.left-group-description {
+    color: white;
+    font-family: "Geologica", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: left;
+    margin-top: -18px;
+}
+
+.left-group-image {
+    position: absolute;
+    bottom: 0;
+}
+
+.right-group {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-group-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-group-texts {
+    padding-left: 5px;
+    margin-bottom: 20px;
+}
+
+.right-group-title {
+    color: #333333;
+    font-family: "Geologica", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 39px;
+    text-align: left;
+}
+
+.right-group-description {
+    color: #333333;
+    font-family: "Geologica", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    margin-top: -5px;
+}
+
+.right-group-image {
+    position: absolute;
+    left: 1000px;
+    top: 70px;
+}
+
+.form-input {
+    width: 307px;
+    height: 60px;
+    border-radius: 30px;
+    padding-left: 48px;
+    border: 1px solid #EEEEEE;
+    font-family: "Geologica", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.form-wrapper {
+    position: relative;
+}
+
+.form-icon {
+    position: absolute;
+    top: 21px;
+    left: 26px;
+    width: 24px;
+    height: 24px;
+}
+
+.form-button {
+    width: 358px;
+    height: 60px;
+    border-radius: 30px;
+    padding: 18px 45px;
+    border: none;
+    background-color: #0000FE;
+    font-family: "Geologica", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.form-link {
+    text-decoration: none;
+    font-family: "Geologica", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #333333;
+    margin-top: 16px;
+    margin-left: 115px;
+    cursor: pointer;
+}
+
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0094FE;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; 
+}
+
+.page-transition.active {
+    opacity: 1;
+    transform: scale(1.1);
+}

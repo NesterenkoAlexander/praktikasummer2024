@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/initial_search.css">
+    <script src="https://kit.fontawesome.com/8087b4fcf8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&display=swap" rel="stylesheet">
+    <title>Поиск</title>
+</head>
+<body class="fade-out">
+    <div class="container">
+        <ul class="nav">
+            <li><img src="img/itBgituLogo.png" alt="" class="icon"></li>
+            <li><h1 class="header jumping-letters">Поиск++</h1></li>
+            <li><button class="history">История</button></li>
+        </ul>
+
+        <button class="name">Nickname <i class="fa-solid fa-chevron-down chevron"></i></button>
+        <div class="dropdown-menu">
+            <button class="logout">Выход</button>
+        </div>
+
+        <div class="content">
+            <div class="search_engines">
+                <button class="search_engine main_engine">
+                    <img src="img/WikiLogo.png" alt="" id="selected-engine-img">
+                    <p id="selected-engine-text">Wikipedia</p>
+                </button>
+                <div class="extra_engines">
+                    <button class="search_engine" data-engine="Wikipedia">
+                        <img src="img/WikiLogo.png" alt="">
+                        <p>Wikipedia</p>
+                    </button>
+                    <button class="search_engine" data-engine="ChatGPT">
+                        <img src="img/OpenAiLogo.png" alt="">
+                        <p>ChatGPT</p>
+                    </button>
+                    <button class="search_engine" data-engine="ЯндексGPT">
+                        <img src="img/YandexAliceLogo.png" alt="">
+                        <p>ЯндексGPT</p>
+                    </button>
+                </div>
+            </div>
+            <input type="text" placeholder="Введите запрос" class="search">
+            <button class="search_sign"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div> 
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.body.classList.remove('fade-out');
+
+        const searchButton = document.querySelector('.search_sign');
+        if (searchButton) {
+            searchButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'found_search.html';
+                }, 500);
+            });
+        }
+
+        const historyButton = document.querySelector('.history');
+        if (historyButton) {
+            historyButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'history.html';
+                }, 500);
+            });
+        }
+
+        const nameButton = document.querySelector('.name');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const logoutButton = document.querySelector('.logout');
+        const chevron = document.querySelector('.chevron');
+
+        nameButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            chevron.classList.toggle('rotate');
+        });
+
+        logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = '../authorization/login.html';
+            }, 500);
+        });
+
+        const mainEngineButton = document.querySelector('.main_engine');
+        const extraEngines = document.querySelector('.extra_engines');
+        const selectedEngineImg = document.getElementById('selected-engine-img');
+        const selectedEngineText = document.getElementById('selected-engine-text');
+
+        mainEngineButton.addEventListener('click', () => {
+            extraEngines.classList.toggle('show');
+        });
+
+        const extraEngineButtons = document.querySelectorAll('.extra_engines .search_engine');
+        extraEngineButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                extraEngines.classList.remove('show');
+                selectedEngineImg.src = event.currentTarget.querySelector('img').src;
+                selectedEngineText.textContent = event.currentTarget.querySelector('p').textContent;
+            });
+        });
+
+        const header = document.querySelector('.jumping-letters');
+        header.innerHTML = Array.from(header.textContent).map(letter => `<span>${letter}</span>`).join('');
+
+        header.addEventListener('click', () => {
+            document.querySelectorAll('.jumping-letters span').forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('jump');
+                    setTimeout(() => {
+                        span.classList.remove('jump');
+                    }, 500);
+                }, index * 50);
+            });
+        });
+    });
+</script>

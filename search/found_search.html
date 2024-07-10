@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/found_search.css">
+    <script src="https://kit.fontawesome.com/8087b4fcf8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&display=swap" rel="stylesheet">
+    <title>Найденный ответ</title>
+</head>
+<body>
+    <ul class="nav">
+        <li><img src="img/itBgituLogo.png" alt="" class="icon"></li>
+        <li><h1 class="header jumping-letters">Поиск++</h1></li>
+        <li><button class="history">История</button></li>
+    </ul>
+
+    <button class="name">Nickname <i class="fa-solid fa-chevron-down chevron"></i></button>
+    <div class="dropdown-menu">
+        <button class="logout">Выход</button>
+    </div>
+    
+    <div class="poisk">
+        <button class="search_engine">
+            <img src="img/WikiLogo.png" alt="">
+            <p>Wikipedia</p>
+        </button>
+        <input type="text" placeholder="Введите запрос" class="search">
+        <button class="search_sign"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2 class="content_header">Найденный ответ</h2>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales pulvinar mollis. Cras congue tortor nec enim mattis, non tristique nisl ultricies. Quisque consectetur nisl non consequat dictum. Aenean malesuada nibh at enim porta, sed dictum nisi sollicitudin. Maecenas gravida arcu ac congue sagittis. Duis vestibulum, sapien non egestas commodo, massa ante sollicitudin est, ultrices posuere dolor justo nec lacus. Mauris at vestibulum turpis. Mauris scelerisque ante in odio ornare aliquam.</p>
+            <p class="text">Sed at velit pellentesque, tincidunt eros et, lacinia risus. Duis ac pretium nibh, quis fringilla felis. Cras lacinia elit sit amet ultricies fermentum. Vestibulum neque urna, sodales eget ullamcorper sed, accumsan vel ligula. Etiam velit metus, condimentum ac lacus vitae, congue congue quam. In tincidunt nibh neque, non varius eros iaculis nec. Pellentesque sodales, purus et dictum consequat, diam turpis mattis orci, sit amet gravida magna mauris sit amet nisi. Ut feugiat erat quis orci ultrices, ac bibendum mi condimentum.</p>
+        </div>
+    </div>
+</body> 
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const searchButton = document.querySelector('.search_sign');
+        if (searchButton) {
+            searchButton.addEventListener('click', () => {
+                window.location.href = 'found_search.html';
+            });
+        }
+
+        const historyButton = document.querySelector('.history');
+        if (historyButton) {
+            historyButton.addEventListener('click', () => {
+                window.location.href = 'history.html';
+            });
+        }
+
+        const nameButton = document.querySelector('.name');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const logoutButton = document.querySelector('.logout');
+        const chevron = document.querySelector('.chevron');
+
+        nameButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            chevron.classList.toggle('rotate');
+        });
+
+        logoutButton.addEventListener('click', () => {
+            window.location.href = '../authorization/login.html';
+        });
+
+        const header = document.querySelector('.jumping-letters');
+        header.innerHTML = Array.from(header.textContent).map(letter => `<span>${letter}</span>`).join('');
+
+        header.addEventListener('click', () => {
+            document.querySelectorAll('.jumping-letters span').forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('jump-reverse');
+                    setTimeout(() => {
+                        span.classList.remove('jump-reverse');
+                    }, 500);
+                }, index * 50);
+            });
+        });
+    });
+</script>

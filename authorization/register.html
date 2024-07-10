@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск++</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/12be2a89a6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="left-group">
+        <div class="left-group-texts">
+            <h1 class="left-group-title">Поиск ++</h1>
+            <p class="left-group-description">Пока что не самое и не популярное средство поиска информации</p>
+        </div>
+        <img class="left-group-image" src="img/circles.png" alt="Decorative Circles">
+    </div>
+    <div class="right-group">
+        <img class="right-group-image" src="img/itBgituLogo.png" alt="Logo">
+        <form class="right-group-form" method="POST" action="">
+            <div class="right-group-texts">
+                <h1 class="right-group-title">Привет!</h1>
+                <p class="right-group-description">Зарегистрируйтесь</p>
+            </div>
+            <div class="form-wrapper">
+                <label for="fullName" class="sr-only">Full Name</label>
+                <i class="fa-solid fa-user form-icon" style="color: #333333;"></i>
+                <input id="fullName" class="form-input form-username" name="fullName" type="text" placeholder="Full Name">
+            </div>
+            <div class="form-wrapper">
+                <label for="email" class="sr-only">Email Address</label>
+                <i class="fa-regular fa-envelope form-icon" style="color: #333333;"></i>
+                <input id="email" class="form-input form-email" name="email" type="email" placeholder="Email Address">
+            </div>
+            <div class="form-wrapper">
+                <label for="password" class="sr-only">Password</label>
+                <i class="fa-solid fa-lock form-icon" style="color: #333333;"></i>
+                <input id="password" class="form-input form-password" name="password" type="password" placeholder="Password">
+            </div>
+            <button class="form-button" type="button" onclick="animateTransition('login.html')">Зарегистрироваться</button>
+        </form>
+    </div>
+    <div class="page-transition"></div>
+</body>
+</html>
+
+<script>
+    function animateTransition(targetUrl) {
+        const transitionElement = document.querySelector('.page-transition');
+        gsap.to(transitionElement, { duration: 1, opacity: 1, scale: 1.1, ease: "power2.inOut", onComplete: () => {
+            window.location.href = targetUrl;
+        }});
+    }
+</script>
+

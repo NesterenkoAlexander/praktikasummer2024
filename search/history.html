@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/history.css">
+    <script src="https://kit.fontawesome.com/8087b4fcf8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&display=swap" rel="stylesheet">
+    <title>История поиска</title>
+</head>
+<body class="fade-out">
+    <div class="container">
+        <ul class="nav">
+            <li><img src="img/itBgituLogo.png" alt="" class="icon"></li>
+            <li><h1 class="header jumping-letters">История</h1></li>
+            <li><button class="search">Поиск</button></li>
+        </ul>
+        <div class="content">
+            <p class="request">Запрос</p>
+            <p class="answer">Ответ</p> 
+
+            <div class="feedlike">
+                <div class="feedback">
+                    <input class="comment" value="Комментарий" readonly>
+                    <p class="edit_comment">Редактировать комментарий</p>
+                </div>
+                <div class="like_dislike">
+                    <i class="fa-solid fa-thumbs-up like"></i>
+                    <i class="fa-regular fa-thumbs-down dislike"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <p class="request">Запрос</p>
+            <p class="answer">Ответ</p>
+
+            <div class="feedlike">
+                <div class="feedback">
+                    <input class="comment" value="Комментарий" readonly>
+                    <p class="edit_comment">Редактировать комментарий</p>
+                </div>
+                <div class="like_dislike">
+                    <i class="fa-solid fa-thumbs-up like"></i>
+                    <i class="fa-regular fa-thumbs-down dislike"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.body.classList.remove('fade-out');
+
+        const searchButton = document.querySelector('.search');
+        if (searchButton) {
+            searchButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'initial_search.html';
+                }, 500);
+            });
+        }
+
+        document.querySelectorAll('.edit_comment').forEach(editCommentBtn => {
+            editCommentBtn.addEventListener('click', (e) => {
+                const commentInput = e.target.previousElementSibling;
+                if (commentInput.readOnly) {
+                    commentInput.readOnly = false;
+                    commentInput.focus();
+                    editCommentBtn.textContent = 'Сохранить комментарий';
+                } else {
+                    commentInput.readOnly = true;
+                    editCommentBtn.textContent = 'Редактировать комментарий';
+                }
+            });
+        });
+
+        document.querySelectorAll('.like').forEach(likeBtn => {
+            likeBtn.addEventListener('click', (e) => {
+                const dislikeBtn = e.target.nextElementSibling;
+                if (dislikeBtn.classList.contains('disliked')) {
+                    dislikeBtn.classList.remove('disliked');
+                }
+                e.target.classList.toggle('liked');
+            });
+        });
+
+        document.querySelectorAll('.dislike').forEach(dislikeBtn => {
+            dislikeBtn.addEventListener('click', (e) => {
+                const likeBtn = e.target.previousElementSibling;
+                if (likeBtn.classList.contains('liked')) {
+                    likeBtn.classList.remove('liked');
+                }
+                e.target.classList.toggle('disliked');
+            });
+        });
+
+        const header = document.querySelector('.jumping-letters');
+        header.innerHTML = Array.from(header.textContent).map(letter => `<span>${letter}</span>`).join('');
+
+        header.addEventListener('click', () => {
+            document.querySelectorAll('.jumping-letters span').forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('jump');
+                    setTimeout(() => {
+                        span.classList.remove('jump');
+                    }, 500);
+                }, index * 50);
+            });
+        });
+    });
+</script>
